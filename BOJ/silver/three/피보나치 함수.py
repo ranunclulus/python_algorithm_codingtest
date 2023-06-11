@@ -1,18 +1,15 @@
-def fibonacci(number):
-    global zero_count, one_count
-    if (number == 0):
-        zero_count += 1
-        return 0
-    elif(number == 1):
-        one_count += 1
-        return 1
+fibonacci_num = []
+for i in range(41):
+    if (i == 0):
+        fibonacci_num.append((1, 0))
+    elif(i == 1):
+        fibonacci_num.append((0, 1))
     else:
-        return fibonacci(number - 1) + fibonacci(number -2)
+        fibonacci_num.append((fibonacci_num[i - 2][0] + fibonacci_num[i - 1][0],
+                              fibonacci_num[i - 2][1] + fibonacci_num[i - 1][1]))
 
-zero_count, one_count = 0, 0
-repeat_num = int(input())
-for i in range(repeat_num):
-    fibonacci_num = int(input())
-    zero_count, one_count = 0, 0
-    fibonacci(fibonacci_num)
-    print(zero_count, one_count)
+k = int(input())
+
+for i in range(k):
+    n = int(input())
+    print(fibonacci_num[n][0], fibonacci_num[n][1])
